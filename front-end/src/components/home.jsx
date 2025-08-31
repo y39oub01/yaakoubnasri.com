@@ -26,7 +26,7 @@ function Home({darkmode, scorlto, refs} ){
     <a href="https://github.com/y39oub01" aria-label="GitHub">
         <i className="fab fa-github"></i>
     </a>
-    <a href="soon" aria-label="LinkedIn">
+    <a href="https://www.linkedin.com/in/yaakoub-nasri-40213b364/" aria-label="LinkedIn">
         <i className="fab fa-linkedin"></i>
     </a>
     <a href="mailto:yaakoubnasri01@gmail.com" aria-label="Email">
