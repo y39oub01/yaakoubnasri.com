@@ -1,0 +1,1988 @@
+/* 👑 God-Tier Portfolio Styles v14 - Increased Button Spacing (CLASS NAMES PRESERVED) */
+
+/* === Cosmic Color Palette === */
+:root {
+    /* Dark Mode Colors (from your provided palette) */
+    --bg-void: #121212; /* Main background color */
+    --primary-neon: #00ADB5; /* Main accent color, teal */
+    --accent-sun: #F8B400;   /* Secondary accent color, gold */
+    --text-pure: #EEEEEE;    /* Main text color for dark mode */
+    --text-ghost: rgba(176, 176, 176, 0.7); /* Lighter text for dark mode */
+
+    /* Light Mode Colors (from your provided palette) */
+    --light-bg-soft: #f8f9fa; /* Main background color */
+    --light-text-dark: #333333; /* Main text color */
+    --light-primary-blue: #1a73e8; /* Main accent, blue */
+    --light-accent-green: #34a853; /* Secondary accent, green */
+
+    /* Gradients (from your provided palette) */
+    --gradient-teal: linear-gradient(135deg, var(--primary-neon) 0%, rgba(0, 173, 181, 0.7) 100%);
+    --gradient-gold-pulse: linear-gradient(90deg, var(--accent-sun), #ffd700, var(--accent-sun));
+    --gradient-bg: radial-gradient(circle at 10% 20%, rgba(18, 18, 18, 0.9) 0%, rgba(0, 0, 0, 0.95) 90%);
+
+    /* NEW: Gradients for Buttons/Progress Bars (matching Mohamed Rayen style with your colors) */
+    --btn-gradient-dark: linear-gradient(90deg, #9B5DE5, #F15BB5); /* Purple to Pink for dark mode primary button */
+    --btn-gradient-light: linear-gradient(90deg, #6A5ACD, #4682B4); /* Muted Blue/Purple for light mode primary button */
+    --progress-gradient-dark: linear-gradient(90deg, #9B5DE5, #F15BB5); /* Purple to Pink for dark mode progress bar */
+    --progress-gradient-light: linear-gradient(90deg, #6A5ACD, #4682B4); /* Muted Blue/Purple for light mode progress bar */
+
+    /* NEW: About Me Image Card Colors (from Mohamed Rayen reference) */
+    --about-card-bg-dark: #1A202C; /* Dark background for the image card */
+    --about-card-border-dark: rgba(255, 255, 255, 0.05);
+    --about-card-shadow-dark: rgba(0, 0, 0, 0.2);
+
+    --about-card-bg-light: #FFFFFF; /* White background for the image card */
+    --about-card-border-light: rgba(0, 0, 0, 0.08);
+    --about-card-shadow-light: rgba(0, 0, 0, 0.05);
+}
+
+
+/* === Base & Global Styles === */
+html {
+    scroll-behavior: smooth;
+    font-size: 62.5%; /* 1rem = 10px for precision */
+    background: var(--bg-void); /* Default background for initial load */
+}
+
+body {
+    font-family: 'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.7;
+    color: var(--text-pure); /* Default text color (dark mode) */
+    background-color: var(--bg-void); /* Solid background as per Mohamed Rayen design */
+    background-attachment: fixed;
+    overflow-x: hidden;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 0.5s ease, color 0.5s ease;
+    box-sizing: border-box;
+}
+
+/* Common section layout styles - simplified backgrounds to solid colors */
+.dark-section,
+.dark-section-aboutme,
+.dark-section-skills {
+    background-color: var(--bg-void); /* Consistent dark background */
+    color: var(--text-pure);
+}
+
+.light-section,
+.light-section-aboutme,
+.light-section-skills {
+    background-color: var(--light-bg-soft); /* Consistent light background */
+    color: var(--light-text-dark);
+}
+
+/* All sections share these layout properties */
+.dark-section,
+.light-section,
+.dark-section-aboutme,
+.light-section-aboutme,
+.dark-section-skills,
+.light-section-skills {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start; /* Content aligned left within section */
+    padding: 8rem 10%; /* Increased vertical padding for more breathing room */
+    min-height: 100vh;
+    box-sizing: border-box;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* Removed background blob animations as they are not present in the reference images */
+.dark-section::before,
+.light-section::before,
+.dark-section-aboutme::before,
+.light-section-aboutme::before,
+.dark-section-skills::before,
+.light-section-skills::before {
+    content: none; /* Explicitly remove the pseudo-element */
+}
+
+
+/* === Navigation Bar (NAV) === */
+.dark-nav,
+.light-nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 1.5rem 5%; /* Adjusted padding to match image */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Lighter, subtle shadow */
+    backdrop-filter: none; /* Removed blur as per image */
+    -webkit-backdrop-filter: none; /* Removed blur as per image */
+    transition: all 0.5s ease;
+    border-bottom: none; /* Removed border as per image */
+}
+
+.dark-nav {
+    background-color: #121212; /* Solid dark background */
+}
+
+.light-nav {
+    background-color: #f8f9fa; /* Solid light background */
+}
+
+/* Logo styles */
+.logo {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 2.2rem; /* Adjusted size to match image */
+    letter-spacing: -0.5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dark-nav .logo {
+    color: var(--primary-neon);
+}
+
+.light-nav .logo {
+    color: var(--light-primary-blue);
+}
+
+/* Removed hover text-shadow for light mode logo */
+.light-nav .logo:hover {
+    text-shadow: none;
+}
+
+/* Nav links */
+.nav-link {
+    display: flex;
+    gap: 3rem; /* Increased gap for more spacing as in image */
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-link li a {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s ease; /* Only color transition on the link itself */
+    padding: 0.5rem 0;
+    font-size: 1.6rem;
+    overflow: visible; /* Allow pseudo-element to extend outside */
+}
+
+.dark-nav .nav-link li a {
+    color: var(--text-pure);
+}
+
+.light-nav .nav-link li a {
+    color: var(--light-text-dark);
+}
+
+/* --- NAV LINK HOVER ANIMATION: Color Change & Underline --- */
+.nav-link li a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px; /* Position slightly below the text */
+    left: 0;
+    width: 100%;
+    height: 2px;
+    transform: scaleX(0); /* Start hidden, scaled to 0 width */
+    transform-origin: left; /* Scale from left */
+    transition: transform 0.3s ease-out;
+}
+
+.dark-nav .nav-link li a::after {
+    background-color: var(--primary-neon); /* Neon color for dark mode underline */
+}
+
+.light-nav .nav-link li a::after {
+    background-color: var(--light-primary-blue); /* Blue color for light mode underline */
+}
+
+.nav-link li a:hover {
+    color: var(--primary-neon); /* Change text color on hover for dark mode */
+}
+
+.light-nav .nav-link li a:hover {
+    color: var(--light-primary-blue); /* Change text color on hover for light mode */
+}
+
+.nav-link li a:hover::after {
+    transform: scaleX(1); /* Expand to full width on hover */
+}
+
+
+/* Dark mode toggle button */
+.nav-link button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dark-nav .nav-link button:hover {
+    background: rgba(248, 180, 0, 0.1);
+}
+
+.light-nav .nav-link button:hover {
+    background: rgba(26, 115, 232, 0.1);
+}
+
+.nav-link button:hover {
+    transform: scale(1.1);
+}
+
+.nav-link button img {
+    width: 24px;
+    height: 24px;
+    transition: all 0.3s ease;
+}
+
+.dark-nav .nav-link button img {
+    filter: invert(90%);
+}
+
+.light-nav .nav-link button img {
+    filter: invert(30%);
+}
+
+
+/* === Hero Section (HOME) Typography === */
+h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem); /* Larger font size for impact */
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+    opacity: 0;
+    animation: fadeInUp 0.8s 0.2s ease-out forwards;
+    position: relative;
+    z-index: 1;
+    color: inherit;
+}
+
+/* 'Yaakoub Nasri' styled as span - NOW A REGULAR COLOR, NO GRADIENT */
+span {
+    font-size: clamp(3.5rem, 8vw, 6rem); /* Even larger font size */
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    background: none; /* Ensure no background gradient */
+    -webkit-background-clip: unset; /* Remove background clipping */
+    background-clip: unset; /* Remove background clipping */
+    -webkit-text-fill-color: unset; /* Ensure text color is not transparent */
+    color: inherit; /* Use standard text color from parent theme */
+    display: block;
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: fadeInUp 0.8s 0.4s ease-out forwards; /* Removed moveGradient animation */
+    position: relative;
+    z-index: 1;
+}
+
+/* Specific colors for the span in dark/light mode */
+.dark-section span {
+    color: var(--primary-neon); /* Use primary neon for dark mode name */
+}
+
+.light-section span {
+    color: var(--light-primary-blue); /* Use light primary blue for light mode name */
+}
+
+/* Removed hover effects from the name (span) */
+.light-section span:hover,
+.dark-section span:hover {
+    /* No specific hover effects for the name as requested */
+}
+
+h2 {
+    font-size: clamp(2rem, 4vw, 3rem); /* Adjusted h2 size */
+    font-weight: 400;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeInUp 0.6s 0.6s ease-out forwards; /* Adjusted animation delay */
+    position: relative;
+    z-index: 1;
+    color: inherit;
+}
+
+p {
+    font-size: clamp(1.4rem, 1.5vw, 1.8rem); /* Larger paragraph text */
+    max-width: 700px;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeInUp 0.6s 0.8s ease-out forwards; /* Adjusted animation delay */
+    position: relative;
+    z-index: 1;
+    text-align: left;
+}
+
+.dark-section p {
+    color: var(--text-ghost);
+}
+
+.light-section p {
+    color: var(--light-text-dark);
+}
+
+/* Buttons & Social Links */
+.button-container {
+    display: flex;
+    /* --- INCREASED BUTTON SPACE FIX --- */
+    gap: 2rem; /* Increased gap to provide more space between buttons */
+    margin-bottom: 2.5rem; /* Adjusted margin */
+    opacity: 0;
+    animation: fadeInUp 0.6s 1s ease-out forwards; /* Adjusted animation delay */
+    position: relative;
+    z-index: 1;
+    justify-content: flex-start;
+}
+
+button {
+    padding: 1.2rem 7rem; /* Larger padding for buttons */
+    border-radius: 8px; /* Less rounded corners as in image */
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 1.6rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+      margin-right: 20px
+}
+
+.dark-section button:first-child {
+    background: var(--btn-gradient-dark); /* Gradient background for primary button */
+    color: white; /* White text on gradient */
+}
+
+.dark-section button:last-child {
+    background: transparent;
+    color: var(--text-pure); /* White text for outlined button */
+    border: 2px solid rgba(255, 255, 255, 0.3); /* Subtle white border */
+}
+
+.light-section button:first-child {
+    background: var(--btn-gradient-light); /* Gradient background for primary button */
+    color: white;
+}
+
+.light-section button:last-child {
+    background: transparent;
+    color: var(--light-text-dark); /* Dark text for outlined button */
+    border: 2px solid rgba(0, 0, 0, 0.1); /* Subtle dark border */
+}
+
+/* Button hover effects */
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.dark-section button:first-child:hover {
+    background: var(--btn-gradient-dark); /* Keep same gradient on hover */
+    opacity: 0.9; /* Slight opacity change on hover */
+}
+
+.dark-section button:last-child:hover {
+    background: rgba(255, 255, 255, 0.05); /* Subtle background on hover */
+    border-color: var(--primary-neon); /* Accent border on hover */
+}
+
+.light-section button:first-child:hover {
+    background: var(--btn-gradient-light);
+    opacity: 0.9;
+}
+
+.light-section button:last-child:hover {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: var(--light-primary-blue);
+}
+
+.social-links {
+    display: flex;
+    gap: 1.5rem; /* Added space between social icons as per image */
+    margin-top: 1rem;
+    opacity: 0;
+    animation: fadeInUp 0.6s 1.2s ease-out forwards; /* Adjusted animation delay */
+    position: relative;
+    z-index: 1;
+    justify-content: flex-start;
+}
+
+.social-links a {
+    color: inherit;
+    font-size: 2.5rem; /* Larger social icon size */
+    transition: all 0.3s ease;
+    padding: 0; /* Removed padding to let gap handle spacing */
+}
+
+.dark-section .social-links a {
+    color: var(--text-ghost);
+}
+
+.light-section .social-links a {
+    color: var(--light-text-dark);
+}
+
+.social-links a:hover {
+    transform: translateY(-3px);
+    color: var(--primary-neon); /* Accent color on hover */
+}
+
+.light-section .social-links a:hover {
+    color: var(--light-primary-blue); /* Accent color on hover */
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) translateX(0);
+    }
+    50% {
+        transform: translateY(-20px) translateX(20px);
+    }
+    100% {
+        transform: translateY(0) translateX(0);
+    }
+}
+
+/* Keyframes for the gradient text animation (still used for section titles) */
+@keyframes moveGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+/* === ABOUT ME SECTION === */
+/* Backgrounds are handled by .dark-section-aboutme and .light-section-aboutme */
+
+.about-container {
+    display: flex;
+    align-items: center; /* Vertically center content and image */
+    justify-content: space-between; /* Space out content and image */
+    gap: 6rem; /* Increased gap for visual balance as in image */
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.about-content {
+    flex: 1 1 550px; /* Allow content to grow, with a preferred base width */
+    text-align: left;
+}
+
+.about-content h2 {
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    margin-bottom: 2rem;
+    /* Main section title styling - no gradient for section titles as per image */
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+    color: inherit; /* Use theme color for title */
+    display: block; /* Ensure it takes full width for centering */
+    text-align: center; /* Center the section title */
+    position: relative; /* For the underline */
+    padding-bottom: 1rem; /* Space for the underline */
+}
+
+/* Underline for section titles */
+.about-content h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 80px; /* Width of the underline */
+    height: 4px; /* Thickness of the underline */
+    background: var(--primary-neon); /* Accent color for underline */
+    border-radius: 2px;
+}
+
+.light-section-aboutme .about-content h2::after {
+    background: var(--light-primary-blue);
+}
+
+.about-content p {
+    font-size: 1.7rem;
+    line-height: 1.8;
+    opacity: 0.9;
+    margin-bottom: 0;
+    max-width: none;
+    text-align: left;
+    display: block; /* Ensure it's a block element */
+}
+
+.dark-section-aboutme p.aboutme-para {
+    color: var(--text-ghost);
+}
+
+.light-section-aboutme p.aboutme-para {
+    color: var(--light-text-dark);
+}
+
+/* --- PHOTO FIX: Replicating Mohamed Rayen's photo style exactly --- */
+/* Container for the image - remains simplified to just center the circular image */
+.about-image-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center;     /* Center vertically */
+    margin: 20px auto;       /* Add some margin and center the container itself */
+}
+
+/* The image itself - focused on circular shape, size, and now animation */
+.about-image {
+    width: 200px; /* Current size, adjust as needed */
+    height: 200px; /* Current size, adjust as needed */
+    display: block;
+    object-fit: cover; /* Ensures the image covers the circle without distortion */
+    border-radius: 50%; /* Makes the image perfectly circular */
+
+    /* --- REMOVED: border: 3px solid var(--accent-sun); --- */
+    /* --- REMOVED: .light-section-aboutme .about-image rule as well if it was just for border color --- */
+
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Slightly stronger shadow for a bit more pop */
+    
+    /* Animation Properties */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth transitions for hover effects */
+}
+
+/* Animation on Hover */
+.about-image:hover {
+    transform: scale(1.05); /* Slightly enlarge the image on hover */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4); /* Make shadow more pronounced on hover */
+}
+
+/* Optional: A subtle pulse animation that runs continuously */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.01); /* Very slight pulse */
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Apply the pulse animation (optional, uncomment to use) */
+/* .about-image {
+    animation: pulse 2s infinite ease-in-out;
+} */
+
+/* You can remove these if --accent-sun and --light-accent-green are not used elsewhere.
+   If you had specific border-color changes for light mode before, those are now gone
+   because the border itself is removed.
+*/
+/* :root {
+  --accent-sun: #FFD700;
+  --light-accent-green: #689F38;
+} */
+
+.aboutme-para {
+    text-align: left; /* Explicitly left-align within flex item */
+}
+
+
+/* === SKILLS SECTION === */
+/* Backgrounds are handled by .dark-section-skills and .light-section-skills */
+
+.skills-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+    animation: fadeIn 1s ease-out; /* Note: fadeIn animation is not defined, consider adding if needed */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+.skills-heading {
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    margin-bottom: 4rem;
+    background: none; /* No gradient for section titles as per image */
+    -webkit-background-clip: unset;
+    background-clip: unset;
+    color: inherit; /* Use theme color for title */
+    display: block; /* Ensure it takes full width for centering */
+    text-align: center; /* Center the section title */
+    position: relative; /* For the underline */
+    padding-bottom: 1rem; /* Space for the underline */
+}
+
+/* Underline for section titles */
+.skills-heading::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 80px; /* Width of the underline */
+    height: 4px; /* Thickness of the underline */
+    background: var(--primary-neon); /* Accent color for underline */
+    border-radius: 2px;
+}
+
+.light-section-skills .skills-heading::after {
+    background: var(--light-primary-blue);
+}
+
+
+.skills-row {
+    display: flex;
+    gap: 2.5rem; /* Adjusted gap between cards */
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch; /* Make cards same height */
+    width: 100%;
+}
+
+.skills-card {
+    background-color: #1A202C; /* Darker background for cards in dark mode */
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.05); /* Very subtle white border for dark mode */
+    border-radius: 12px; /* Rounded corners as in image */
+    padding: 2rem; /* Adjusted padding */
+    min-width: 280px; /* Adjusted min-width for cards */
+    max-width: 350px; /* Adjusted max-width for cards */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align content to the left within card */
+    text-align: left; /* Align text to the left within card */
+}
+
+.light-section-skills .skills-card {
+    background-color: #FFFFFF; /* White background for light mode */
+    border: 1px solid rgba(0, 0, 0, 0.08); /* Subtle dark border */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.skills-card:hover {
+    transform: translateY(-8px); /* More pronounced lift on hover */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
+}
+
+.dark-section-skills .skills-card:hover {
+    background-color: #1E2738; /* Slightly lighter on hover */
+}
+
+.light-section-skills .skills-card:hover {
+    background-color: #FDFDFD; /* Subtle change on hover */
+}
+
+
+.card-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+    -webkit-text-fill-color: unset;
+    color: inherit; /* Regular color based on theme */
+    text-align: left; /* Align card title left */
+}
+
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap; /* Allow skills to wrap into two columns within the card */
+    justify-content: space-between; /* Space out items horizontally */
+    gap: 1.5rem 1rem; /* Vertical and horizontal gap */
+    width: 100%;
+}
+
+.skill-item {
+    display: flex;
+    flex-direction: column; /* Icon and name above progress bar */
+    align-items: flex-start; /* Align icon/name/progress bar to the left */
+    gap: 0.5rem; /* Space between icon/name and progress bar */
+    padding: 0; /* Removed padding */
+    transition: transform 0.2s ease;
+    border-radius: 4px;
+    width: 48%; /* Each item takes roughly half width to create two columns */
+    cursor: default;
+}
+
+.skill-item:hover {
+    transform: translateX(3px); /* Subtle horizontal shift on hover */
+    background-color: transparent; /* No background change on hover */
+}
+
+.skill-item span {
+    font-weight: 500;
+    font-size: 1.5rem;
+    color: inherit;
+    margin-bottom: 0; /* No bottom margin, gap handles it */
+}
+
+/* --- SKILLS ICONS COLOR FIX --- */
+.skill-item img {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 0;
+    opacity: 0.9;
+    filter: none; /* Reset any previous filters */
+}
+
+.dark-section-skills .skill-item img {
+    /* For dark mode, icons should be primary-neon */
+    filter: invert(50%) sepia(100%) saturate(2000%) hue-rotate(145deg) brightness(100%) contrast(100%); /* Approximate teal from neon */
+}
+
+.light-section-skills .skill-item img {
+    /* For light mode, icons should be light-primary-blue */
+    filter: invert(20%) sepia(100%) saturate(3000%) hue-rotate(200deg) brightness(100%) contrast(100%); /* Approximate blue */
+}
+
+
+/* Re-introduced progress bars as per Mohamed Rayen design */
+.progress-bar {
+    width: 100%;
+    height: 6px; /* Slimmer progress bar */
+    background-color: rgba(255, 255, 255, 0.1); /* Subtle background for dark mode */
+    border-radius: 3px;
+    overflow: hidden;
+    margin-top: 0.8rem; /* Space below skill name/icon */
+}
+
+.light-section-skills .progress-bar {
+    background-color: rgba(0, 0, 0, 0.05); /* Subtle background for light mode */
+}
+
+.progress-inner {
+    height: 100%;
+    background: var(--progress-gradient-dark); /* Gradient fill for dark mode */
+    border-radius: 3px;
+    transition: width 0.8s ease-out;
+}
+
+.light-section-skills .progress-inner {
+    background: var(--progress-gradient-light); /* Gradient fill for light mode */
+}
+
+/* Example widths for progress bars - adjust as needed for actual skills */
+.frontend .progress-inner {
+    width: 90%;
+}
+.backend .progress-inner {
+    width: 80%;
+}
+
+
+/* === Responsive Design === */
+@media (max-width: 1024px) {
+    .nav-link {
+        gap: 2rem;
+    }
+    .nav-link li a {
+        font-size: 1.5rem;
+    }
+    .logo {
+        font-size: 2rem;
+    }
+
+    .dark-section, .light-section,
+    .dark-section-aboutme, .light-section-aboutme,
+    .dark-section-skills, .light-section-skills {
+        padding: 6rem 8%;
+    }
+    h1 {
+        font-size: clamp(2.2rem, 6vw, 3.5rem);
+    }
+    span {
+        font-size: clamp(3rem, 9vw, 5rem);
+    }
+    h2 {
+        font-size: clamp(1.8rem, 5vw, 2.8rem);
+    }
+    p {
+        font-size: clamp(1.2rem, 1.8vw, 1.6rem);
+    }
+    button {
+        font-size: 1.5rem;
+        padding: 1rem 2rem;
+    }
+    .social-links {
+        gap: 1.2rem;
+    }
+    .social-links a {
+        font-size: 2.2rem;
+    }
+
+    .about-container {
+        flex-direction: column;
+        text-align: center;
+        padding: 4rem 5%; /* Adjusted padding */
+        gap: 3rem;
+    }
+    .about-content {
+        padding-right: 0;
+    }
+    .about-content h2,
+    .about-content p {
+        text-align: center;
+    }
+    /* --- PHOTO FIX: Card size on tablets --- */
+    .about-image-container {
+        flex: 0 0 220px; /* Adjusted card size on tablets */
+        height: 220px;
+        margin-top: 2rem;
+        margin-left: 0;
+        display: flex; /* Back to flex for centering when stacked */
+        padding: 15px; /* Adjust padding for smaller card */
+    }
+    .about-content p {
+        display: block; /* Back to block when image is not inline */
+    }
+
+
+    .skills-container {
+        padding: 4rem 5%; /* Adjusted padding */
+    }
+    .skills-heading {
+        font-size: clamp(2.2rem, 5vw, 3rem);
+        margin-bottom: 3rem;
+    }
+    .skills-row {
+        gap: 1.5rem;
+    }
+    .skills-card {
+        min-width: unset;
+        max-width: 300px;
+        width: 100%;
+        padding: 1.8rem;
+    }
+    .card-title {
+        font-size: 1.6rem;
+    }
+    .skills-grid {
+        gap: 1rem 0.8rem; /* Adjusted gap for mobile */
+    }
+    .skill-item {
+        width: 47%; /* Adjusted width for two columns on smaller screens */
+    }
+    .skill-item span {
+        font-size: 1.3rem;
+    }
+    .skill-item img {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-link {
+        gap: 1.5rem;
+    }
+    .nav-link li a {
+        font-size: 1.4rem;
+    }
+    .logo {
+        font-size: 1.8rem;
+    }
+
+    .dark-section, .light-section,
+    .dark-section-aboutme, .light-section-aboutme,
+    .dark-section-skills, .light-section-skills {
+        padding: 5rem 5%;
+    }
+    h1 {
+        font-size: clamp(2rem, 7vw, 3rem);
+    }
+    span {
+        font-size: clamp(2.8rem, 10vw, 4.5rem);
+    }
+    h2 {
+        font-size: clamp(1.6rem, 6vw, 2.5rem);
+    }
+    p {
+        font-size: clamp(1.1rem, 2vw, 1.4rem);
+        margin-bottom: 2rem;
+    }
+
+    .button-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        width: 100%;
+    }
+    button {
+        width: 100%;
+        font-size: 1.4rem;
+        padding: 0.9rem 1.8rem;
+    }
+    .social-links {
+        justify-content: center;
+        font-size: 2rem;
+        gap: 1rem;
+    }
+
+    .about-container {
+        padding: 3rem 1rem;
+    }
+    .about-content h2,
+    .about-content p {
+        text-align: center;
+    }
+    .about-content p {
+        font-size: 1.3rem;
+    }
+    /* --- PHOTO FIX: Card size on mobile --- */
+    .about-image-container {
+        flex: 0 0 180px; /* Smaller card size on mobile */
+        height: 180px;
+        padding: 12px; /* Adjust padding for smaller card */
+    }
+
+    .skills-container {
+        padding: 3rem 1rem;
+    }
+    .skills-heading {
+        font-size: clamp(2rem, 6vw, 2.8rem);
+        margin-bottom: 2.5rem;
+    }
+    .skills-row {
+        flex-direction: column;
+        align-items: center;
+    }
+    .skills-card {
+        width: 90%;
+        max-width: 300px;
+        padding: 1.5rem;
+    }
+    .card-title {
+        font-size: 1.5rem;
+    }
+    .skills-grid {
+        gap: 1rem 0.6rem;
+    }
+    .skill-item {
+        width: 47%;
+    }
+    .skill-item span {
+        font-size: 1.2rem;
+    }
+    .skill-item img {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-link {
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 1rem;
+        width: 100%;
+        gap: 0.8rem;
+    }
+    .nav-link li a {
+        font-size: 1.3rem;
+    }
+    .logo {
+        font-size: 1.6rem;
+    }
+
+    .dark-section, .light-section {
+        padding: 4rem 3%;
+    }
+    h1 {
+        font-size: clamp(1.8rem, 8vw, 2.8rem);
+    }
+    span {
+        font-size: clamp(2.5rem, 12vw, 4rem);
+    }
+    h2 {
+        font-size: clamp(1.4rem, 7vw, 2.2rem);
+    }
+    p {
+        font-size: clamp(1rem, 2.5vw, 1.2rem);
+        margin-bottom: 1.5rem;
+    }
+
+    .button-container {
+        gap: 0.8rem;
+    }
+    button {
+        font-size: 1.3rem;
+        padding: 0.8rem 1.5rem;
+    }
+    .social-links {
+        font-size: 1.8rem;
+        gap: 0.8rem;
+    }
+
+    .about-container {
+        padding: 2rem 0.5rem;
+        gap: 1.5rem;
+    }
+    .about-content h2 {
+        font-size: clamp(1.8rem, 7vw, 2.5rem);
+    }
+    .about-content p {
+        font-size: 1.2rem;
+    }
+    /* --- PHOTO FIX: Card size on tiny screens --- */
+    .about-image-container {
+        flex: 0 0 140px; /* Smallest card size on tiny screens */
+        height: 140px;
+        padding: 10px; /* Adjust padding for smallest card */
+    }
+
+    .skills-container {
+        padding: 2.5rem 0.5rem;
+    }
+    .skills-heading {
+        font-size: clamp(1.8rem, 7vw, 2.5rem);
+        margin-bottom: 2rem;
+    }
+    .skills-card {
+        padding: 1.2rem;
+        width: 95%;
+        max-width: 250px;
+    }
+    .card-title {
+        font-size: 1.4rem;
+    }
+    .skills-grid {
+        gap: 0.8rem 0.5rem;
+    }
+    .skill-item {
+        width: 47%;
+    }
+    .skill-item span {
+        font-size: 1.1rem;
+    }
+    .skill-item img {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+
+
+
+
+/* --- NEW: Project Card Colors (add to :root if not already there) --- */
+:root {
+    /* ... existing color variables ... */
+
+    --project-card-bg-dark: #1A202C; /* Same as about/skills card background */
+    --project-card-border-dark: rgba(255, 255, 255, 0.05);
+    --project-card-shadow-dark: rgba(0, 0, 0, 0.2);
+    --project-overlay-bg-dark: rgba(0, 173, 181, 0.8); /* Teal overlay for dark mode */
+
+    --project-card-bg-light: #FFFFFF;
+    --project-card-border-light: rgba(0, 0, 0, 0.08);
+    --project-card-shadow-light: rgba(0, 0, 0, 0.05);
+    --project-overlay-bg-light: rgba(26, 115, 232, 0.8); /* Blue overlay for light mode */
+}
+
+/* --- Section backgrounds (ensure these are added to the general section styles) --- */
+.dark-section-projects {
+    background-color: var(--bg-void);
+    color: var(--text-pure);
+}
+
+.light-section-projects {
+    background-color: var(--light-bg-soft);
+    color: var(--light-text-dark);
+}
+
+/* Projects Section Container */
+.projects-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 5rem 2rem; /* Consistent with other containers */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* Projects Section Heading */
+.projects-heading {
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    margin-bottom: 4rem; /* Spacing below the heading */
+    color: inherit; /* Use theme color for title */
+    display: block;
+    text-align: center;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+/* Underline for Projects heading */
+.projects-heading::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 80px; /* Width of the underline */
+    height: 4px; /* Thickness of the underline */
+    background: var(--primary-neon); /* Accent color for underline */
+    border-radius: 2px;
+}
+
+.light-section-projects .projects-heading::after {
+    background: var(--light-primary-blue);
+}
+
+/* Projects Cards Grid/Flex container */
+.projects-cards {
+    display: flex;
+    flex-wrap: wrap; /* Allow cards to wrap */
+    justify-content: center; /* Center cards horizontally */
+    gap: 3rem; /* Space between project cards */
+    width: 100%;
+}
+
+/* Individual Project Card */
+.project-card {
+    position: relative;
+    overflow: hidden; /* Important for hiding parts of the image and overlay */
+    border-radius: 12px;
+    background-color: var(--project-card-bg-dark);
+    border: 1px solid var(--project-card-border-dark);
+    box-shadow: 0 4px 15px var(--project-card-shadow-dark);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    flex: 1 1 300px; /* Allows cards to grow/shrink, with a base of 300px */
+    max-width: 380px; /* Max width for larger screens */
+    height: 250px; /* Fixed height for consistent card appearance */
+    display: flex;
+    align-items: center; /* Vertically center content if needed */
+    justify-content: center; /* Horizontally center content if needed */
+}
+
+.light-section-projects .project-card {
+    background-color: var(--project-card-bg-light);
+    border: 1px solid var(--project-card-border-light);
+    box-shadow: 0 4px 15px var(--project-card-shadow-light);
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.dark-section-projects .project-card:hover {
+    background-color: #1E2738; /* Slightly lighter on hover */
+}
+
+.light-section-projects .project-card:hover {
+    background-color: #FDFDFD; /* Subtle change on hover */
+}
+
+
+/* Figure for image and caption */
+.project-card figure {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: 0; /* Reset default margin */
+    display: flex; /* To center image within figure if needed */
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Ensure image doesn't overflow rounded corners */
+    border-radius: 12px; /* Match card border-radius */
+}
+
+/* Project Image */
+.project-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the entire figure area */
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.project-card:hover img {
+    transform: scale(1.05); /* Slightly zoom image on hover */
+}
+
+/* Figcaption (Overlay) */
+.project-card figcaption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem; /* Padding for text inside overlay */
+    background-color: var(--project-overlay-bg-dark); /* Dark mode overlay color */
+    color: white; /* Text color on overlay */
+    text-align: center;
+    transform: translateY(100%); /* Start hidden below the card */
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    opacity: 0; /* Start fully transparent */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box; /* Include padding in width/height */
+    height: 100%; /* Make overlay cover full card height */
+    flex-direction: column; /* Stack link vertically if needed */
+}
+
+.light-section-projects .project-card figcaption {
+    background-color: var(--project-overlay-bg-light); /* Light mode overlay color */
+}
+
+.project-card:hover figcaption {
+    transform: translateY(0); /* Slide up on hover */
+    opacity: 1; /* Fade in on hover */
+}
+
+/* "See project" Link inside Figcaption */
+.project-card figcaption a {
+    color: white; /* White text for the link on the overlay */
+    text-decoration: none;
+    font-size: 1.8rem;
+    font-weight: 600;
+    padding: 1rem 2rem;
+    border: 2px solid white; /* White border for the link */
+    border-radius: 6px;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    display: inline-block; /* Allows padding and border */
+}
+
+.project-card figcaption a:hover {
+    background-color: white; /* White background on hover */
+    color: var(--primary-neon); /* Teal text on hover for dark mode */
+    border-color: white;
+}
+
+.light-section-projects .project-card figcaption a:hover {
+    color: var(--light-primary-blue); /* Blue text on hover for light mode */
+}
+
+
+/* --- Responsive Adjustments for Projects Section --- */
+@media (max-width: 1024px) {
+    .projects-container {
+        padding: 6rem 8%;
+    }
+    .projects-heading {
+        font-size: clamp(2.2rem, 5vw, 3rem);
+        margin-bottom: 3rem;
+    }
+    .projects-cards {
+        gap: 2rem;
+    }
+    .project-card {
+        flex: 1 1 280px; /* Adjust base width for tablets */
+        height: 220px;
+    }
+    .project-card figcaption {
+        padding: 1rem;
+    }
+    .project-card figcaption a {
+        font-size: 1.6rem;
+        padding: 0.8rem 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .projects-container {
+        padding: 5rem 5%;
+    }
+    .projects-heading {
+        font-size: clamp(2rem, 6vw, 2.8rem);
+        margin-bottom: 2.5rem;
+    }
+    .projects-cards {
+        flex-direction: column; /* Stack cards vertically on mobile */
+        align-items: center; /* Center stacked cards */
+        gap: 2.5rem;
+    }
+    .project-card {
+        width: 90%; /* Take up more width on small screens */
+        max-width: 350px; /* Prevent cards from getting too wide */
+        height: 200px; /* Slightly smaller height for mobile */
+    }
+    .project-card figcaption a {
+        font-size: 1.5rem;
+        padding: 0.7rem 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .projects-container {
+        padding: 4rem 3%;
+    }
+    .projects-heading {
+        font-size: clamp(1.8rem, 7vw, 2.5rem);
+        margin-bottom: 2rem;
+    }
+    .projects-cards {
+        gap: 2rem;
+    }
+    .project-card {
+        height: 180px; /* Further reduce height on very small screens */
+    }
+    .project-card figcaption a {
+        font-size: 1.4rem;
+        padding: 0.6rem 1rem;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- NEW: Contact Section Specific Colors (add to :root if not already there) --- */
+:root {
+    /* ... existing color variables ... */
+
+    /* Contact Form & Info Card Colors */
+    --contact-card-bg-dark: #1A202C; /* Similar to skills/project cards */
+    --contact-card-border-dark: rgba(255, 255, 255, 0.05);
+    --contact-card-shadow-dark: rgba(0, 0, 0, 0.2);
+    --contact-icon-bg-dark: rgba(0, 173, 181, 0.1); /* Light teal background for icons */
+    --contact-icon-color-dark: var(--primary-neon); /* Teal color for icons */
+    --contact-input-bg-dark: #2D3748; /* Darker background for inputs */
+    --contact-input-border-dark: #4A5568; /* Subtle border for inputs */
+    --contact-input-text-dark: var(--text-pure);
+    --contact-placeholder-dark: rgba(238, 238, 238, 0.6);
+    --contact-error-text-dark: #EF4444; /* Red for errors */
+    --contact-success-text-dark: #10B981; /* Green for success */
+
+
+    --contact-card-bg-light: #FFFFFF;
+    --contact-card-border-light: rgba(0, 0, 0, 0.08);
+    --contact-card-shadow-light: rgba(0, 0, 0, 0.05);
+    --contact-icon-bg-light: rgba(26, 115, 232, 0.1); /* Light blue background for icons */
+    --contact-icon-color-light: var(--light-primary-blue); /* Blue color for icons */
+    --contact-input-bg-light: #F0F4F8; /* Light background for inputs */
+    --contact-input-border-light: #CBD5E0; /* Subtle border for inputs */
+    --contact-input-text-light: var(--light-text-dark);
+    --contact-placeholder-light: rgba(51, 51, 51, 0.6);
+    --contact-error-text-light: #DC2626;
+    --contact-success-text-light: #059669;
+}
+
+/* --- Section backgrounds (ensure these are added to the general section styles) --- */
+.dark-section-contact {
+    background-color: var(--bg-void);
+    color: var(--text-pure);
+}
+
+.light-section-contact {
+    background-color: var(--light-bg-soft);
+    color: var(--light-text-dark);
+}
+
+/* --- Contact Container --- */
+.contact-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 8rem 2rem; /* Consistent section padding */
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping for responsiveness */
+    gap: 4rem; /* Space between info and form sections */
+    justify-content: center;
+    align-items: flex-start; /* Align content to the top within the container */
+    width: 100%;
+}
+
+/* --- Contact Information Section --- */
+.contact-info {
+    flex: 1 1 350px; /* Allow info section to grow, with a base of 350px */
+    background-color: var(--contact-card-bg-dark);
+    border: 1px solid var(--contact-card-border-dark);
+    box-shadow: 0 4px 15px var(--contact-card-shadow-dark);
+    border-radius: 12px;
+    padding: 3rem;
+    display: grid; /* Use grid for layout of items */
+    grid-template-columns: 60px 1fr; /* Icon column and text column */
+    gap: 2rem 1.5rem; /* Row gap and column gap */
+    align-items: center;
+    height: fit-content; /* Adjust height to content */
+}
+
+.light-section-contact .contact-info {
+    background-color: var(--contact-card-bg-light);
+    border: 1px solid var(--contact-card-border-light);
+    box-shadow: 0 4px 15px var(--contact-card-shadow-light);
+}
+
+.contact-info h4 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: inherit; /* Inherit text color from parent */
+}
+
+.contact-info a,
+.contact-info span {
+    font-size: 1.6rem;
+    color: var(--text-ghost); /* Lighter text for details */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.light-section-contact .contact-info a,
+.light-section-contact .contact-info span {
+    color: var(--light-text-dark);
+}
+
+.contact-info a:hover {
+    color: var(--primary-neon); /* Accent color on hover */
+}
+
+.light-section-contact .contact-info a:hover {
+    color: var(--light-primary-blue);
+}
+
+.contact-item {
+    grid-column: 1 / 2; /* Place icon in the first column */
+    width: 50px;
+    height: 50px;
+    background-color: var(--contact-icon-bg-dark);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    color: var(--contact-icon-color-dark);
+}
+
+.light-section-contact .contact-item {
+    background-color: var(--contact-icon-bg-light);
+    color: var(--contact-icon-color-light);
+}
+
+.contact-txt {
+    grid-column: 2 / 3; /* Place text in the second column */
+}
+
+/* --- Contact Form Section --- */
+.contact-form {
+    flex: 2 1 500px; /* Allow form to take more space, with a base of 500px */
+    background-color: var(--contact-card-bg-dark);
+    border: 1px solid var(--contact-card-border-dark);
+    box-shadow: 0 4px 15px var(--contact-card-shadow-dark);
+    border-radius: 12px;
+    padding: 3rem;
+}
+
+.light-section-contact .contact-form {
+    background-color: var(--contact-card-bg-light);
+    border: 1px solid var(--contact-card-border-light);
+    box-shadow: 0 4px 15px var(--contact-card-shadow-light);
+}
+
+.form-forcontact {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Space between form elements */
+}
+
+.form-forcontact label {
+    width: 100%; /* Ensure labels take full width */
+}
+
+.form-forcontact input[type="text"],
+.form-forcontact input[type="email"],
+.form-forcontact textarea {
+    width: 100%;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--contact-input-border-dark);
+    background-color: var(--contact-input-bg-dark);
+    color: var(--contact-input-text-dark);
+    font-family: 'Inter', sans-serif;
+    font-size: 1.6rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+.light-section-contact .form-forcontact input[type="text"],
+.light-section-contact .form-forcontact input[type="email"],
+.light-section-contact .form-forcontact textarea {
+    border: 1px solid var(--contact-input-border-light);
+    background-color: var(--contact-input-bg-light);
+    color: var(--contact-input-text-light);
+}
+
+/* Placeholder styling */
+.form-forcontact input::placeholder,
+.form-forcontact textarea::placeholder {
+    color: var(--contact-placeholder-dark);
+    opacity: 1; /* Firefox default opacity is lower */
+}
+
+.light-section-contact .form-forcontact input::placeholder,
+.light-section-contact .form-forcontact textarea::placeholder {
+    color: var(--contact-placeholder-light);
+}
+
+/* Focus styles for inputs and textarea */
+.form-forcontact input:focus,
+.form-forcontact textarea:focus {
+    outline: none;
+    border-color: var(--primary-neon);
+    box-shadow: 0 0 0 3px rgba(0, 173, 181, 0.3);
+}
+
+.light-section-contact .form-forcontact input:focus,
+.light-section-contact .form-forcontact textarea:focus {
+    border-color: var(--light-primary-blue);
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.3);
+}
+
+.form-forcontact textarea {
+    resize: vertical; /* Allow vertical resizing only */
+    min-height: 120px;
+}
+
+/* Error messages */
+.form-forcontact .error {
+    color: var(--contact-error-text-dark);
+    font-size: 1.3rem;
+    margin-top: 0.5rem;
+    display: block; /* Ensure it takes its own line */
+}
+
+.light-section-contact .form-forcontact .error {
+    color: var(--contact-error-text-light);
+}
+
+/* Success message */
+.form-forcontact .success-message {
+    color: var(--contact-success-text-dark);
+    font-size: 1.6rem;
+    text-align: center;
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: rgba(16, 185, 129, 0.1);
+    border-radius: 8px;
+}
+
+.light-section-contact .form-forcontact .success-message {
+    color: var(--contact-success-text-light);
+    background-color: rgba(5, 150, 105, 0.1);
+}
+
+/* Form Buttons */
+.form-forcontact button {
+    padding: 1.2rem 2.5rem;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 1.6rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    width: fit-content; /* Adjust width to content */
+    align-self: flex-start; /* Align buttons to the left */
+}
+
+.form-forcontact button[type="submit"] {
+    background: var(--btn-gradient-dark); /* Using existing gradient variable */
+    color: white;
+    margin-top: 1.5rem; /* Space above submit button */
+}
+
+.light-section-contact .form-forcontact button[type="submit"] {
+    background: var(--btn-gradient-light);
+}
+
+.form-forcontact button[type="reset"] {
+    background: transparent;
+    color: var(--text-pure);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    margin-left: 1.5rem; /* Space between submit and reset */
+}
+
+.light-section-contact .form-forcontact button[type="reset"] {
+    color: var(--light-text-dark);
+    border: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Button hover effects (reusing existing ones) */
+.form-forcontact button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.form-forcontact button[type="submit"]:hover {
+    opacity: 0.9;
+}
+
+.form-forcontact button[type="reset"]:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--primary-neon);
+}
+
+.light-section-contact .form-forcontact button[type="reset"]:hover {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: var(--light-primary-blue);
+}
+
+
+/* --- Responsive Adjustments for Contact Section --- */
+@media (max-width: 1024px) {
+    .contact-container {
+        padding: 6rem 5%;
+        flex-direction: column; /* Stack info and form vertically */
+        align-items: center; /* Center stacked items */
+        gap: 4rem;
+    }
+
+    .contact-info,
+    .contact-form {
+        flex: 1 1 100%; /* Take full width */
+        max-width: 600px; /* Constrain max width for better readability */
+    }
+
+    .contact-info {
+        padding: 2.5rem;
+    }
+
+    .contact-form {
+        padding: 2.5rem;
+    }
+
+    .form-forcontact input[type="text"],
+    .form-forcontact input[type="email"],
+    .form-forcontact textarea {
+        padding: 1.2rem;
+    }
+
+    .form-forcontact button {
+        padding: 1rem 2rem;
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-container {
+        padding: 5rem 3%;
+        gap: 3rem;
+    }
+
+    .contact-info {
+        grid-template-columns: 50px 1fr; /* Slightly smaller icons */
+        gap: 1.5rem 1rem;
+        padding: 2rem;
+    }
+
+    .contact-item {
+        width: 45px;
+        height: 45px;
+        font-size: 2rem;
+    }
+
+    .contact-info h4 {
+        font-size: 1.7rem;
+    }
+
+    .contact-info a,
+    .contact-info span {
+        font-size: 1.5rem;
+    }
+
+    .contact-form {
+        padding: 2rem;
+    }
+
+    .form-forcontact input[type="text"],
+    .form-forcontact input[type="email"],
+    .form-forcontact textarea {
+        padding: 1rem;
+        font-size: 1.5rem;
+    }
+    .form-forcontact button {
+        font-size: 1.4rem;
+        padding: 0.8rem 1.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-container {
+        padding: 4rem 2%;
+        gap: 2.5rem;
+    }
+
+    .contact-info {
+        grid-template-columns: 40px 1fr; /* Even smaller icons */
+        gap: 1.2rem 0.8rem;
+        padding: 1.5rem;
+    }
+
+    .contact-item {
+        width: 40px;
+        height: 40px;
+        font-size: 1.8rem;
+    }
+
+    .contact-info h4 {
+        font-size: 1.6rem;
+    }
+
+    .contact-info a,
+    .contact-info span {
+        font-size: 1.4rem;
+    }
+
+    .contact-form {
+        padding: 1.5rem;
+    }
+
+    .form-forcontact input[type="text"],
+    .form-forcontact input[type="email"],
+    .form-forcontact textarea {
+        padding: 0.8rem;
+        font-size: 1.4rem;
+    }
+    .form-forcontact button {
+        flex-grow: 1; /* Buttons share width */
+        font-size: 1.3rem;
+        padding: 0.7rem 1.5rem;
+        margin-left: 0; /* Remove extra margin on reset button */
+    }
+    .form-forcontact button[type="submit"] {
+        margin-right: 1.5rem; /* Add margin to submit button instead */
+    }
+    .form-forcontact {
+        flex-direction: column; /* Ensure main form is column */
+    }
+    .form-forcontact .button-group { /* A hypothetical wrapper if you want buttons on one line */
+        display: flex;
+        gap: 1.5rem;
+        width: 100%;
+    }
+}
+
+
+
+
+
+
+/* --- NEW: Footer Colors (add to :root if not already there) --- */
+:root {
+    /* ... existing color variables ... */
+
+    --footer-bg-dark: #1A202C; /* A slightly lighter dark background than main body */
+    --footer-text-dark: var(--text-ghost); /* Lighter text for copyright/tagline */
+    --footer-link-dark: var(--text-pure); /* White for main links */
+    --footer-link-hover-dark: var(--primary-neon); /* Teal on hover */
+
+    --footer-bg-light: #E2E8F0; /* A slightly darker light background */
+    --footer-text-light: #525252; /* Darker grey for copyright/tagline */
+    --footer-link-light: var(--light-text-dark); /* Dark text for main links */
+    --footer-link-hover-light: var(--light-primary-blue); /* Blue on hover */
+}
+
+/* --- Footer Section Styles --- */
+.dark-footer {
+    background-color: var(--footer-bg-dark);
+    color: var(--footer-text-dark);
+}
+
+.light-footer {
+    background-color: var(--footer-bg-light);
+    color: var(--footer-text-light);
+}
+
+footer {
+    padding: 3rem 2rem; /* Vertical and horizontal padding */
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.05); /* Subtle top border for separation */
+    transition: background-color 0.5s ease, color 0.5s ease;
+    box-sizing: border-box;
+    display: flex; /* Make footer a flex container */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+}
+
+.light-footer {
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem; /* Space between link group, copyright, and tagline */
+    width: 100%; /* Ensure content takes full available width within max-width */
+}
+
+/* New: Container for Footer Navigation Links */
+.footer-links-container {
+    width: 100%; /* Take full width within footer-content */
+    display: flex;
+    justify-content: center; /* Center the ul within its container */
+}
+
+/* Footer Navigation Links (the UL) */
+.footer-links {
+    list-style: none; /* Remove bullet points */
+    margin: 0; /* Reset default margin */
+    padding: 0; /* Reset default padding */
+    display: flex;
+    flex-wrap: wrap; /* Allow links to wrap on small screens */
+    justify-content: center;
+    gap: 2.5rem; /* Space between individual links (li elements) */
+    margin-bottom: 1rem; /* Space below links */
+}
+
+/* Footer List Items */
+.footer-links li {
+    /* No specific styling needed for li itself unless you want borders/backgrounds */
+}
+
+/* Footer Links (the A tags inside li) */
+.footer-links li a {
+    text-decoration: none;
+    font-size: 1.6rem;
+    font-weight: 500;
+    position: relative;
+    padding: 0.5rem 0; /* Add padding for click area and underline positioning */
+    cursor: pointer; /* Indicate clickable nature */
+    transition: color 0.3s ease;
+}
+
+.dark-footer .footer-links li a {
+    color: var(--footer-link-dark);
+}
+
+.light-footer .footer-links li a {
+    color: var(--footer-link-light);
+}
+
+.footer-links li a:hover {
+    color: var(--footer-link-hover-dark); /* Dark mode hover */
+}
+
+.light-footer .footer-links li a:hover {
+    color: var(--footer-link-hover-light); /* Light mode hover */
+}
+
+/* Optional: Underline on hover for footer links, similar to nav */
+.footer-links li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0; /* Position just below the text */
+    left: 0;
+    width: 100%;
+    height: 2px;
+    transform: scaleX(0); /* Start hidden */
+    transform-origin: center; /* Scale from center */
+    transition: transform 0.3s ease-out;
+}
+
+.dark-footer .footer-links li a::after {
+    background-color: var(--footer-link-hover-dark);
+}
+
+.light-footer .footer-links li a::after {
+    background-color: var(--footer-link-hover-light);
+}
+
+.footer-links li a:hover::after {
+    transform: scaleX(1); /* Expand on hover */
+}
+
+
+/* Copyright and Tagline */
+.footer-copyright,
+.footer-tagline {
+    font-size: 1.4rem;
+    line-height: 1.5;
+    margin: 0; /* Reset default paragraph margin */
+}
+
+.footer-copyright {
+    opacity: 0.8;
+}
+
+.footer-tagline {
+    font-style: italic;
+    opacity: 0.7;
+}
+
+
+/* --- Responsive Adjustments for Footer --- */
+@media (max-width: 768px) {
+    footer {
+        padding: 2.5rem 1.5rem;
+    }
+
+    .footer-links {
+        gap: 1.8rem; /* Reduce gap on smaller screens */
+        margin-bottom: 0.8rem;
+    }
+
+    .footer-links li a {
+        font-size: 1.5rem;
+    }
+
+    .footer-copyright,
+    .footer-tagline {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    footer {
+        padding: 2rem 1rem;
+    }
+
+    .footer-links {
+        flex-direction: column; /* Stack links vertically on very small screens */
+        gap: 1rem; /* Reduce gap further */
+        margin-bottom: 0.5rem;
+    }
+
+    .footer-links li a {
+        font-size: 1.4rem;
+    }
+
+    .footer-copyright,
+    .footer-tagline {
+        font-size: 1.2rem;
+    }
+}
