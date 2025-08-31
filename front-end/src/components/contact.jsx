@@ -36,8 +36,8 @@ function Contact({ darkmode }) {
 
     if (!formdata.msg.trim()) {
       newerror.msg = "Message is required";
-    } else if (formdata.msg.length < 70) {
-      newerror.msg = "Message must be at least 70 characters long";
+    } else if (formdata.msg.length < 5) {
+      newerror.msg = "Message must be at least 5 characters long";
     }
 
     return newerror;
@@ -63,7 +63,7 @@ function Contact({ darkmode }) {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
-          'Accept': 'application/json'
+          'Ac!cept': 'application/json'
         },
         body: JSON.stringify({
           name: formdata.name,
